@@ -50,7 +50,7 @@ app.use(function (req, res, next) {
 
 
 // connect to DB
-db.connect(config.database,
+db.connect(process.env.MONGODB_ECOMMERCE || config.database,
     { useNewUrlParser: true }, () => {
         console.log("DB Connected...")
     })
@@ -72,9 +72,9 @@ const adminPages = require("./routes/admin_pages.js")
 app.use("/admin/pages", adminPages);
 
 port = 3000;
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
 
-    console.log("Server running on port ", port);
+    console.log("Server running on port", port);
 
 })
 
