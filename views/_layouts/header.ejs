@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title><%=title%></title>
+
+</head>
+
+<body>
+
+    <!--* NAVBAR *-->
+    <nav id="nav" class="navbar navbar-expand-md navbar-light bg-dark">
+        <a class="navbar-brand"> <span class="text-white "> Bruno Franzon </span></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon navbar-toggler-focus"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav">
+                <li id="projekt">
+                    <a href="#projetos" class="nav-link text-white font-weight-0 "> Projekte</a>
+                </li>
+                <li id="uebermich">
+                    <a href="#sobre-mim" class="nav-link text-white font-weight-0">Über mich</a>
+                </li>
+                <li id="kontakt">
+                    <a href="#contato" class="nav-link text-white font-weight-0">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <div class="container">
+        <%- messages('messages', locals) %>
