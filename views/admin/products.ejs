@@ -11,7 +11,7 @@
     <thead>
         <tr>
             <th>Products</th>
-            <th>Price (&euro;)</th>
+            <th>Price </th>
             <th>Category</th>
             <th>Product Image</th>
         <!--    <th>Edit</th>-->
@@ -23,7 +23,7 @@
         <% products.forEach(function(product){ %>
         <tr>
             <td><%= product.title%></td>
-            <td><%= parseFloat(product.price).toFixed(2)%></td>
+            <td><%= parseFloat(product.price).toFixed(2)%> (&euro;) </td>
             <td><%= product.category%></td>
             <td>
                 <% if(product.image == ""){%>
