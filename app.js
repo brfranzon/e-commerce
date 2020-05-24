@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const expressValidator = require("express-validator");
 
+const fileUpload = require("express-fileupload");
+
 //init APP
 let app = express();
 
@@ -19,7 +21,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true
-  //  cookie: { secure: true }
+    //  cookie: { secure: true }
 }))
 
 // Express Validator middleware
@@ -48,6 +50,8 @@ app.use(function (req, res, next) {
     next();
 });
 
+// expree fileupload middleware
+app.use(fileUpload());
 
 // connect to DB
 db.connect(process.env.MONGODB_ECOMMERCE || config.database,
@@ -70,6 +74,13 @@ app.use("/", pages);
 
 const adminPages = require("./routes/admin_pages.js")
 app.use("/admin/pages", adminPages);
+
+const adminCategory = require("./routes/admin_categories")
+app.use("/admin/categories", adminCategory);
+
+const adminProducts =  require("./routes/admin_products")
+app.use("/admin/products", adminProducts);
+
 
 port = 5000;
 app.listen(process.env.PORT || port, () => {

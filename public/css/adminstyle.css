@@ -5,3 +5,12 @@ cursor: pointer;
 .ui-state-hightlight{
 border: 2px dashed black;
 }
+
+#imgPreview{
+    margin: 20px;
+}
+
+#image_size{
+    width: 100px;
+    height: 100px;
+}
