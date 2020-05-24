@@ -11,7 +11,6 @@ var Category = require("../models/category");
  * GET products index
  */
 router.get("/", (req, res) => {
-
     var count;
     Products.count((err, numberProduct) => {
         count = numberProduct;
@@ -50,7 +49,7 @@ router.get("/add-product", (req, res) => {
  * POST add product
  */
 router.post("/add-product", (req, res) => {
-   // var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
+    var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
 
     //save to DB  
     var productDB = new Products({
@@ -59,7 +58,7 @@ router.post("/add-product", (req, res) => {
         desc: req.body.desc,
         price: parseFloat(req.body.price).toFixed(2),
         category: req.body.category,
-        image: ""//imageFile
+        image: imageFile
     });
 
 
@@ -73,49 +72,11 @@ router.post("/add-product", (req, res) => {
 })
 
 
-/**
- * POST reoder page 
+
+/*
+ * GET edit product
  */
-router.post("/reorder-pages", (req, res) => {
-    var ids = req.body['id[]'];
 
-    /*loop the ids and change the sorting*/
-    var count = 0;
-
-    for (let i = 0; i < ids.length; i++) {
-        var id = ids[i];
-        count++;
-
-        saveSorting(count);
-        function saveSorting(value) {
-            Page.findById(id).exec((err, page) => {
-                page.sorting = value;
-                page.save(err => {
-                    if (err) return console.log(`Error bei POST reorder page ${err}`);
-                });
-            })
-        };
-    }
-});
-
-
-/**
- * GET edit page
- */
-router.get("/edit-page/:slug", (req, res) => {
-
-    Page.findOne({ slug: req.params.slug }, (err, page) => {
-        if (err) return console.log(`Get edit page error ${err}`);
-
-        res.render("admin/edit_page", {
-            title: page.title,
-            slug: page.slug,
-            content: page.content,
-            id: page._id
-        });
-    })
-
-})
 
 
 /**

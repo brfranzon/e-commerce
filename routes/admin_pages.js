@@ -96,11 +96,11 @@ router.get("/edit-page/:slug", (req, res) => {
 })
 
 
-/**
- * POST edit page
-router.post("/edit-page/:slug", (req, res) => {
 
+// POST edit page
+router.post("/edit-page/:slug", (req, res) => {
     Page.findOne({ slug: req.params.slug }, (err, page) => {
+        console.log(page);
         if (page) {
             req.flash("danger", "Page already exists.");
             res.render("admin/add_page", {
@@ -123,9 +123,10 @@ router.post("/edit-page/:slug", (req, res) => {
                 req.flash("success", "Page added!");
                 res.redirect("/admin/pages");
             })
-        }  
-})  
-*/
+        }
+    })
+})
+
 
 
 /**
