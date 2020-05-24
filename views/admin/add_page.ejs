@@ -10,7 +10,7 @@
 
     <div class="form-group">
         <label for="">Title</label>
-        <input type="text" class="form-control" name="title" value="<%= title%>" placeholder="Title">
+        <input id = "title type="text" class="form-control" name="title" value="<%= title%>" placeholder="Title">
     </div>
 
 
@@ -22,7 +22,7 @@
 
     <div class="form-group">
         <label for="">Content</label>
-        <textarea type="text" class="form-control" name="content" cols=30 rows="10" value="<%= content%>"
+        <textarea id = "ta" type="text" class="form-control" name="content" cols=30 rows="10" value="<%= content%>"
             placeholder="Content"></textarea>
     </div>
 
@@ -43,10 +43,14 @@
         let messages = [];
         if (title.value === "" || title.value === null) {
             messages.push("Title is riquered!");
+            title.classList.add("border-danger");
+        }else{
+            title.classList.remove("border-danger"); 
         }
 
         if (slug.value === "" || slug.value === null) {
             messages.push("Slug is riquered!");
+            slug.classList.add("border-danger");
         }
 
         if (messages.length > 0) {

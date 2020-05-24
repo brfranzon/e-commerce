@@ -71,7 +71,7 @@ app.use("/", pages);
 const adminPages = require("./routes/admin_pages.js")
 app.use("/admin/pages", adminPages);
 
-port = 4000;
+port = 5000;
 app.listen(process.env.PORT || port, () => {
 
     console.log("Server running on port", port);

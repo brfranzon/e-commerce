@@ -40,7 +40,7 @@ router.post("/add-page", (req, res) => {
     var pageDB = new Page({
         title: req.body.title[0],
         slug: req.body.title[1],
-        content: req.body.title[2],
+        content: req.body.content,
         sorting: 100
     });
 
@@ -50,8 +50,6 @@ router.post("/add-page", (req, res) => {
         res.redirect("/admin/pages");
     });
 })
-
-
 
 /**
  * POST reoder page 
@@ -75,11 +73,7 @@ router.post("/reorder-pages", (req, res) => {
                 });
             })
         };
-
-
     }
-
-
 });
 
 
@@ -88,9 +82,7 @@ router.post("/reorder-pages", (req, res) => {
  */
 router.get("/edit-page/:slug", (req, res) => {
 
-
     Page.findOne({ slug: req.params.slug }, (err, page) => {
-
         if (err) return console.log(`Get edit page error ${err}`);
 
         res.render("admin/edit_page", {
@@ -106,23 +98,46 @@ router.get("/edit-page/:slug", (req, res) => {
 
 /**
  * POST edit page
- */
 router.post("/edit-page/:slug", (req, res) => {
 
-    var pageDB = new Page({
-        title: req.body.title[0],
-        slug: req.body.title[1],
-        content: req.body.title[2],
-        id: re
-    });
+    Page.findOne({ slug: req.params.slug }, (err, page) => {
+        if (page) {
+            req.flash("danger", "Page already exists.");
+            res.render("admin/add_page", {
+                title: page.title,
+                slug: page.slug,
+                content: page.content,
+                id: page._id
+            });
+        } else {
+            //   save to DB  
+            var pageDB = new Page({
+                title: req.body.title[0],
+                slug: req.body.slug,
+                content: req.body.title[1],
+                sorting: 100
+            });
+
+            pageDB.save((err) => {
+                if (err) return console.log(err);
+                req.flash("success", "Page added!");
+                res.redirect("/admin/pages");
+            })
+        }  
+})  
+*/
 
 
-    pageDB.save((err) => {
+/**
+ * Delete Page
+ */
+router.get("/delete-page/:id", (req, res) => {
+    Page.findByIdAndRemove(req.params.id, (err) => {
         if (err) return console.log(err);
-        res.redirect("/admin/pages");
-    });
-
-
+        req.flash("success", "Page deleted!")
+        res.redirect("/admin/pages")
+    })
 })
+
 
 module.exports = router;
