@@ -1,28 +1,28 @@
 <%- include('../_layouts/adminheader'); %>
 
-<h2 class="page-title">Add a Product</h2>
+<h2 class="page-title mt-5">Fügen Sie ein neues Produkt hinzu</h2>
 
-<a href="/admin/products" class="btn btn-primary">Back to all Products</a>
+<a href="/admin/products" class="btn btn-primary">Zurück zu den Produkten</a>
 <br><br>
 
 <div id="message_error"></div>
 <form id="form" method="POST" action="/admin/products/add-product" enctype="multipart/form-data">
 
     <div class="form-group">
-        <label for="">Title</label>
+        <label for="">Titel</label>
         <input id="title" type="text" class="form-control" name="title" value="<%= title%>" placeholder="Title"
             required>
     </div>
 
 
     <div class="form-group">
-        <label for="">Description</label>
+        <label for="">Beschreibung</label>
         <textarea  type="text" class="form-control" name="content" cols=30 rows="3" value="<%= desc%>"
             placeholder="Description" required></textarea>
     </div>
 
     <div class="form-group">
-        <label for="">Categories</label>
+        <label for="">Kategorien</label>
 
         <select name="category" class="form-control">
             <%categories.forEach(cat=>{%>
@@ -33,17 +33,17 @@
     </div>
 
     <div class="form-group">
-        <label for="">Price</label>
+        <label for="">Preis</label>
         <input type="text" class="form-control" name="price" value="<%= price%>" placeholder="Price" required>
     </div>
 
     <div class="form-group">
-        <label for="">Image (.jpg)</label>
+        <label for="">Bild</label>
         <input id="img" type="file" class="form-control" name="image" required>
         <img   src="" id="imgPreview" class="mb-3">
     </div>
 
-    <button  type="button" class="btn btn-success p-2">Submit</button>
+    <button  class="btn btn-success p-2">Senden</button>
 </form>
 
 <script>

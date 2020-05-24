@@ -1,8 +1,8 @@
 <%- include('../_layouts/adminheader'); %>
 
-<h2 class="page-title"> Products</h2>
+<h2 class="page-title mt-5"> Produkte</h2>
 
-<a href="/admin/products/add-product" class="btn btn-primary">Add a new Products</a>
+<a href="/admin/products/add-product" class="btn btn-primary">Fügen Sie ein neues Produkt hinzu</a>
 <br><br>
 
 <%if(count > 0){%>
@@ -10,12 +10,12 @@
 
     <thead>
         <tr>
-            <th>Products</th>
-            <th>Price </th>
-            <th>Category</th>
-            <th>Product Image</th>
+            <th>Produkt</th>
+            <th>Preis </th>
+            <th>Kategorie</th>
+            <th>Bild</th>
         <!--    <th>Edit</th>-->
-            <th>Delete</th>
+            <th>Löschen</th>
         </tr>
     </thead>
 
@@ -33,14 +33,14 @@
                 <%}%>
             </td>
           <!--  <td> <a href="/admin/products/edit-product/<%=product.slug%>">Edit</a> </td> -->
-            <td><a class="confirmDelete" href="/admin/products/delete-product/<%=product._id%>">Delete</a></td>
+            <td><a class="confirmDelete" href="/admin/products/delete-product/<%=product._id%>">Löschen</a></td>
 
         </tr>
         <% }) %>
     </tbody>
 </table>
 <%}else{%>
-<h3 class="text-center">No products available!</h3>
+<h3 class="text-center">Kein Produkt verfügbar!</h3>
 <%}%>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

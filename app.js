@@ -82,7 +82,7 @@ const adminProducts =  require("./routes/admin_products")
 app.use("/admin/products", adminProducts);
 
 
-port = 5000;
+port = 4000;
 app.listen(process.env.PORT || port, () => {
 
     console.log("Server running on port", port);

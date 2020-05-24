@@ -1,33 +1,33 @@
 <%- include('../_layouts/adminheader'); %>
 
-<h2 class="page-title">Add a page</h2>
+<h2 class="page-title mt-5">Fügen Sie eine Seite hinzu</h2>
 
-<a href="/admin/pages" class="btn btn-primary">Back to all pages</a>
+<a href="/admin/pages" class="btn btn-primary">Zurück zu den Seiten</a>
 <br><br>
 
 <div id="message_error"></div>
 <form id="form" method="POST" action="/admin/pages/add-page">
 
     <div class="form-group">
-        <label for="">Title</label>
+        <label for="">Titel</label>
         <input id = "title type="text" class="form-control" name="title" value="<%= title%>" placeholder="Title">
     </div>
 
 
     <div class="form-group">
-        <label for="">Slug</label>
+        <label for="">URL Slug</label>
         <input type="text" class="form-control" name="title" value="<%= slug%>" placeholder="Slug">
     </div>
 
 
     <div class="form-group">
-        <label for="">Content</label>
+        <label for="">Inhalt</label>
         <textarea id = "ta" type="text" class="form-control" name="content" cols=30 rows="10" value="<%= content%>"
             placeholder="Content"></textarea>
     </div>
 
 
-    <button class="btn btn-defaut border">Submit</button>
+    <button class="btn btn-defaut border">Senden</button>
 
 </form>
 
