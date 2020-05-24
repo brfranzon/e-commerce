@@ -17,9 +17,9 @@ app.use(bodyParser.json())
 // Express Session middleware
 app.use(session({
     secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    resave: true,
+    saveUninitialized: true
+  //  cookie: { secure: true }
 }))
 
 // Express Validator middleware
@@ -71,7 +71,7 @@ app.use("/", pages);
 const adminPages = require("./routes/admin_pages.js")
 app.use("/admin/pages", adminPages);
 
-port = 3000;
+port = 4000;
 app.listen(process.env.PORT || port, () => {
 
     console.log("Server running on port", port);

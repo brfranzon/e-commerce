@@ -5,7 +5,8 @@
 <a href="/admin/pages" class="btn btn-primary">Back to all pages</a>
 <br><br>
 
-<form method="POST" action="/admin/pages/add-page">
+<div id="message_error"></div>
+<form id="form" method="POST" action="/admin/pages/add-page">
 
     <div class="form-group">
         <label for="">Title</label>
@@ -21,13 +22,40 @@
 
     <div class="form-group">
         <label for="">Content</label>
-        <textarea type="text" class="form-control" name="title"  cols = 30 rows = "10" value="<%= content%>" placeholder="Content"></textarea>
+        <textarea type="text" class="form-control" name="content" cols=30 rows="10" value="<%= content%>"
+            placeholder="Content"></textarea>
     </div>
 
 
-  <button class="btn btn-defaut border">Submit</button>
+    <button class="btn btn-defaut border">Submit</button>
 
 </form>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script>
+    const form = document.getElementById("form");
+    const error = document.getElementById("message_error");
+    const title = document.getElementsByTagName("input")[0];
+    const slug = document.getElementsByTagName("input")[1];
+    form.addEventListener("submit", (e) => {
+        let messages = [];
+        if (title.value === "" || title.value === null) {
+            messages.push("Title is riquered!");
+        }
+
+        if (slug.value === "" || slug.value === null) {
+            messages.push("Slug is riquered!");
+        }
+
+        if (messages.length > 0) {
+            e.preventDefault();
+            error.innerHTML = messages.join(`<br>`);
+            error.classList.add("text-white","font-weight-bold", "mb-3", "border",  "border-danger", "p-2", "rounded");
+            error.style.backgroundColor = "rgb(254, 175, 174)";
+        }
+    })
+</script>
 
 <%- include('../_layouts/adminfooter'); %>
