@@ -66,8 +66,6 @@ router.post("/add-product", (req, res) => {
 
     productDB.save(err => {
         if (err) return console.log(err);
-
-  
         req.flash("success", "Product added!");
         res.redirect("/admin/products");
     })

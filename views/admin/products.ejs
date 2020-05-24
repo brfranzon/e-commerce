@@ -15,7 +15,7 @@
             <th>Category</th>
             <th>Product Image</th>
             <th>Edit</th>
-            <th>Delete...</th>
+         <!--     <th>Delete...</th>-->
         </tr>
     </thead>
 
@@ -32,7 +32,7 @@
                 <img id = "image_size"  src="/product_images/<%= product.image%>">
                 <%}%>
             </td>
-            <td> <a href="/admin/products/edit-product/<%=product.slug%>">Edit</a> </td>
+         <!--   <td> <a href="/admin/products/edit-product/<%=product.slug%>">Edit</a> </td>-->
             <td><a class="confirmDelete" href="/admin/products/delete-product/<%=product._id%>">Delete</a></td>
 
         </tr>
