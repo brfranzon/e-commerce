@@ -50,7 +50,7 @@ router.get("/add-product", (req, res) => {
  * POST add product
  */
 router.post("/add-product", (req, res) => {
-    var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
+   // var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
 
     //save to DB  
     var productDB = new Products({
@@ -59,13 +59,13 @@ router.post("/add-product", (req, res) => {
         desc: req.body.desc,
         price: parseFloat(req.body.price).toFixed(2),
         category: req.body.category,
-        image: imageFile
+        image: ""//imageFile
     });
 
 
 
     productDB.save(err => {
-        if (err) return console.log(err);
+        if (err) return console.log(err);        
         req.flash("success", "Product added!");
         res.redirect("/admin/products");
     })
